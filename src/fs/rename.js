@@ -19,4 +19,4 @@ const rename = async () => {
   }
 };
 
-await rename();
+rename();

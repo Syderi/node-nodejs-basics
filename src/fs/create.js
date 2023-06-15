@@ -3,9 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 async function createFile() {
-  const currentFilePath = fileURLToPath(import.meta.url);
-  const currentDirPath = path.dirname(currentFilePath);
-  const filePath = path.join(currentDirPath, 'files', 'fresh.txt');
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const filePath = path.join(__dirname, 'files', 'fresh.txt');
   const fileContent = 'I am fresh and young';
 
   try {

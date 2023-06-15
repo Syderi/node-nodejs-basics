@@ -8,10 +8,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 async function copyFolder() {
-  const currentFilePath = fileURLToPath(import.meta.url);
-  const currentDirPath = path.dirname(currentFilePath);
-  const sourcePath = path.join(currentDirPath, 'files');
-  const destinationPath = path.join(currentDirPath, 'files_copy');
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const sourcePath = path.join(__dirname, 'files');
+  const destinationPath = path.join(__dirname, 'files_copy');
 
   try {
     await fs.access(sourcePath);
