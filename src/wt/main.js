@@ -15,10 +15,10 @@ const performCalculations = async () => {
     const promise = new Promise((resolve) => {
       const worker = new Worker(workerPath);
       worker.on('message', (result) => {
-        resolve({ status: 'resolved', data: result });
+        resolve({ status: 'resolved', data: result, index: i });
       });
       worker.on('error', (error) => {
-        resolve({ status: 'error', data: null });
+        resolve({ status: 'error', data: null, index: i });
       });
       worker.postMessage(i + 10);
     });
@@ -26,7 +26,9 @@ const performCalculations = async () => {
   }
 
   const results = await Promise.all(promises);
-  return results;
+  return results
+    .sort((a, b) => a.index - b.index)
+    .map(({ status, data }) => ({ status, data }));
 };
 
 const printResults = async () => {
