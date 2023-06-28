@@ -12,13 +12,13 @@ const performCalculations = async () => {
   const promises = [];
 
   for (let i = 0; i < threads; i++) {
-    const promise = new Promise((resolve) => {
+    const promise = new Promise((resolve, reject) => {
       const worker = new Worker(workerPath);
       worker.on('message', (result) => {
         resolve({ status: 'resolved', data: result, index: i });
       });
-      worker.on('error', (error) => {
-        resolve({ status: 'error', data: null, index: i });
+      worker.on('error', () => {
+        reject({ status: 'error', data: null, index: i });
       });
       worker.postMessage(i + 10);
     });

@@ -5,7 +5,7 @@ const parseArgs = () => {
     const propName = args[i].slice(2); 
     const value = args[i + 1];
 
-    process.stdout.write(`${propName} is ${value}\n`);
+    process.stdout.write(`${propName} is ${value}, `);
   }
   process.stdout.write('\n');
 };

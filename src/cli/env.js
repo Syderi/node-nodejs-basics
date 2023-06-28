@@ -4,7 +4,7 @@ const parseEnv = () => {
     if (key.startsWith(prefix)) {
       const value = process.env[key];
       const formatted = `${key}=${value}`;
-      process.stdout.write(formatted + '; ' + '\n');
+      process.stdout.write(formatted + '; ');
     }
   }
   process.stdout.write('\n');

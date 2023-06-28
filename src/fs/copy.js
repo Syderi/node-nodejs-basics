@@ -10,6 +10,11 @@ async function copy() {
 
   try {
     await fs.access(sourcePath);
+  } catch (error) {
+    throw new Error('FS operation failed');
+  }
+
+  try {
     await fs.access(destinationPath);
     throw new Error('FS operation failed');
   } catch (error) {
@@ -39,4 +44,4 @@ async function copyFiles(sourcePath, destinationPath) {
   }
 }
 
-copy()
+copy();
